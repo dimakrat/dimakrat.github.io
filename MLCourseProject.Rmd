@@ -54,7 +54,7 @@ We use RandomForest method to build model for classification and regression. Thi
 library(randomForest)
 set.seed(333)
 rfmodel <- randomForest(classe ~. , data=traindf, importance=TRUE)
-save(rfmodel,file="rfmodel.RData") #remove after debuging
+#save(rfmodel,file="rfmodel.RData") #remove after debuging
 #load("rfmodel.RData") #remove after debuging
 print(rfmodel)
 ```
