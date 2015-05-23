@@ -68,7 +68,7 @@ Cross-validating by using the model with the test data set and provided sample t
 rfprediction <- predict(rfmodel, testdf)
 confusionMatrix(rfprediction, testdf$classe)
 ```
-We get the great accuracy of 99.55 which shows **out of sample error rate** is **0.5%**. The RandomForest is a good enough method and we don't need to test any other.
+We get the great accuracy of 99.55 which shows **out of sample error rate** is **0.45%**. The RandomForest is a good enough method and we don't need to test any other.
 ```{r}
 plot(rfmodel)
 ```
