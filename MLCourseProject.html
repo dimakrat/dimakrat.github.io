@@ -114,8 +114,6 @@ testdf &lt;- df[-TrainIn,]</code></pre>
 <pre class="r"><code>library(randomForest)
 set.seed(333)
 rfmodel &lt;- randomForest(classe ~. , data=traindf, importance=TRUE)
-#save(rfmodel,file=&quot;rfmodel.RData&quot;) #remove after debuging
-#load(&quot;rfmodel.RData&quot;) #remove after debuging
 print(rfmodel)</code></pre>
 <pre><code>## 
 ## Call:
