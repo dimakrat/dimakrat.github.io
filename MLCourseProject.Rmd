@@ -5,7 +5,7 @@ date: "March 14, 2015"
 output: html_document
 ---
 
-## Description of theproblem##
+## Description of the problem##
 Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a large amount of data about personal activity relatively inexpensively. These type of devices are part of the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behaviour, or because they are tech geeks. One thing that people regularly do is quantify how much of a particular activity they do, but they rarely quantify how well they do it.
 
 ##The goal of this project##
@@ -53,9 +53,9 @@ We use RandomForest method to build model for classification and regression. Thi
 ```{r,cache=TRUE}
 library(randomForest)
 set.seed(333)
-#rfmodel <- randomForest(classe ~. , data=traindf, importance=TRUE)
-#save(rfmodel,file="rfmodel.RData") #remove after debuging
-load("rfmodel.RData") #remove after debuging
+rfmodel <- randomForest(classe ~. , data=traindf, importance=TRUE)
+save(rfmodel,file="rfmodel.RData") #remove after debuging
+#load("rfmodel.RData") #remove after debuging
 print(rfmodel)
 ```
 Cross-validating by using the test part of the data set with the training data set.
