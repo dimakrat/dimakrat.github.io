@@ -45,10 +45,13 @@ plot(df$classe, xlab="classe", ylab='frequency')
 We divide the main data into a training set of 75% and a testing set of 25%.
 ```{r}
 library(caret)
+library(randomForest)
 TrainIn <- createDataPartition(df$classe, p=0.75, list = FALSE)
 traindf <- df[TrainIn,]
 testdf <- df[-TrainIn,]
 ```
+
+## Building the model
 We use RandomForest method to build model for classification and regression. This method reduces nonlinear features and overfitting.
 ```{r,cache=TRUE}
 library(randomForest)
@@ -56,12 +59,14 @@ set.seed(333)
 rfmodel <- randomForest(classe ~. , data=traindf, importance=TRUE)
 print(rfmodel)
 ```
+## Valodation the model
 Cross-validating by using the test part of the data set with the training data set.
 ```{r}
+
 rfprediction <- predict(rfmodel, testdf)
 confusionMatrix(rfprediction, testdf$classe)
 ```
-We get the great accuracy of 0.999, 95% CI : (0.993, 0.997). The RandomForest is a good enough method and we don't need to test any other.
+We get the great accuracy of 99%. The RandomForest is a good enough method and we don't need to test any other.
 ```{r}
 plot(rfmodel)
 ```
