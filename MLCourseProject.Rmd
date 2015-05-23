@@ -59,14 +59,16 @@ set.seed(333)
 rfmodel <- randomForest(classe ~. , data=traindf, importance=TRUE)
 print(rfmodel)
 ```
-## Valodation the model
-Cross-validating by using the test part of the data set with the training data set.
+The out-of-bag(OOB) error rate 0.41% by the model is good to estimate **out of sample error rate**. 
+
+## Cross Valodation and Out of Sample Error rate
+Cross-validating by using the model with the test data set and provided sample tasting data set to produce
 ```{r}
 
 rfprediction <- predict(rfmodel, testdf)
 confusionMatrix(rfprediction, testdf$classe)
 ```
-We get the great accuracy of 99%. The RandomForest is a good enough method and we don't need to test any other.
+We get the great accuracy of 99.55 which shows **out of sample error rate** is **0.5%**. The RandomForest is a good enough method and we don't need to test any other.
 ```{r}
 plot(rfmodel)
 ```
@@ -78,7 +80,7 @@ head(rfmodel$importance, n = 5)
 ```
 
 ## Predict answers for 20 samples and generate files for sumbmitting. 
-We use provided test set out-of-sample error.
+We use provided test data set.
 ```{r}
 result <- predict(rfmodel, finTest)
 print(result)
